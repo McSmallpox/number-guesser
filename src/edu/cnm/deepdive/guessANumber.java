@@ -21,19 +21,7 @@ public class guessANumber {
     randomized = random.nextInt(100) + 1;
     System.out.println("Please input a number between 1 and 100. Press 0 to give up.");
     do {
-      guess = input.nextInt();
-      if (guess == 0) {
-        guessAgain = false;
-      } else if (guess < randomized) {
-        System.out.println("That's too low");
-        guessAgain = true;
-      } else if (guess > randomized) {
-        System.out.println("That's too high");
-        guessAgain = true;
-      } else {
-        System.out.println("That's right!");
-        guessAgain = false;
-      }
+      guessAgain = guessAndCheck(randomized);
 
 
     } while (guessAgain);
@@ -44,5 +32,24 @@ public class guessANumber {
       //.toLowerCase() converts the string produced into lowercase.
     } while (answer.isEmpty());
     return answer.charAt(0) == 'y';
+  }
+
+  private static boolean guessAndCheck(int randomized) {
+    int guess;
+    boolean guessAgain;
+    guess = input.nextInt();
+    if (guess == 0) {
+      guessAgain = false;
+    } else if (guess < randomized) {
+      System.out.println("That's too low");
+      guessAgain = true;
+    } else if (guess > randomized) {
+      System.out.println("That's too high");
+      guessAgain = true;
+    } else {
+      System.out.println("That's right!");
+      guessAgain = false;
+    }
+    return guessAgain;
   }
 }
